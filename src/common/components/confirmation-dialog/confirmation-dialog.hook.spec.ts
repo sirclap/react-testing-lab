@@ -21,7 +21,7 @@ describe('useConfirmationDialog specs', () => {
     expect(result.current.onOpenDialog).toEqual(expect.any(Function));
   });
 
-  it('should set isOpen and itemToDelete when it calls onOpenDialog', () => {
+  it('should set isOpen (true) and itemToDelete when it calls onOpenDialog', () => {
     // Arrange
     const sampleItem = {
       id: '1',
@@ -40,7 +40,7 @@ describe('useConfirmationDialog specs', () => {
     expect(result.current.itemToDelete).toEqual(sampleItem);
   });
 
-  it('should set true to isOpen when it calls onClose', () => {
+  it('should set isOpen (false)  when it calls onClose', () => {
     // Arrange
     const sampleItem = {
       id: '1',
@@ -59,7 +59,7 @@ describe('useConfirmationDialog specs', () => {
     expect(result.current.isOpen).toEqual(false);
   });
 
-  it('should set empty lookup to itemToDelete when it calls onAccept', () => {
+  it('should set itemToDelete (empty lookup) when it calls onAccept', () => {
     // Arrange
     const emptyItem = {
       id: '',
