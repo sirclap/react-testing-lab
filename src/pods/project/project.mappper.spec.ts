@@ -3,7 +3,6 @@ import * as viewModel from './project.vm';
 import { mapProjectFromApiToVm } from './project.mapper';
 
 describe('project mapper specs', () => {
-  
   it('Return empty project when it feeds undefined', () => {
     // Arrange
     const project: apiModel.Project = undefined;
@@ -56,6 +55,62 @@ describe('project mapper specs', () => {
 
     // Assert
     expect(result.employees).toEqual([]);
+  });
+
+  it('Return empty employees array when it feeds empty array', () => {
+    // Arrange
+    const project: apiModel.Project = {
+      id: '1',
+      name: 'John Doe',
+      isActive: true,
+      employees: [],
+    };
+
+    // Act
+    const result: viewModel.Project = mapProjectFromApiToVm(project);
+
+    // Assert
+    expect(result.employees).toEqual([]);
+  });
+
+  it('Return employees array when it feeds array', () => {
+    // Arrange
+    const project: apiModel.Project = {
+      id: '1',
+      name: 'John Doe',
+      isActive: true,
+      employees: [
+        {
+          id: '1',
+          isAssigned: true,
+          employeeName: 'Dasy Doe',
+        },
+        {
+          id: '2',
+          isAssigned: true,
+          employeeName: 'John Smith',
+        },
+      ],
+    };
+
+    // Act
+    const result: viewModel.Project = mapProjectFromApiToVm(project);
+
+    // Assert
+    const expectedEmployees: viewModel.EmployeeSummary[] = [
+      {
+        id: '1',
+        isAssigned: true,
+        employeeName: 'Dasy Doe',
+      },
+      {
+        id: '2',
+        isAssigned: true,
+        employeeName: 'John Smith',
+      },
+    ];
+
+    expect(result.employees).toEqual(expectedEmployees);
   });
 
   it('Return one mapped project when it feeds one apiModel project', () => {
