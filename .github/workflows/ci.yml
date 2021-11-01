@@ -10,6 +10,6 @@ jobs:
       - name: Install
         run: npm install
       - name: Build
-        run: rpm run build
+        run: npm run build
       - name: Tests
         run: npm test
