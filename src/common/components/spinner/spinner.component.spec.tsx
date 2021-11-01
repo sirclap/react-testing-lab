@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { SpinnerComponent } from './spinner.component';
-import { usePromiseTracker } from 'react-promise-tracker';
 
 const promiseResult = {
   promiseInProgress: true,
@@ -16,8 +15,6 @@ jest.mock('react-promise-tracker', () => {
 });
 
 describe('SpinnerComponent specs', () => {
-  let usePromiseTrackerOrig;
-
   it('should display a modal', async () => {
     // Arrange
 
