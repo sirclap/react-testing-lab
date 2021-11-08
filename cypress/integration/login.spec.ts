@@ -21,7 +21,7 @@ describe('Login specs', () => {
     // Act
     cy.visit('/');
 
-    cy.findByRole('textbox1').as('userInput');
+    cy.findByRole('textbox').as('userInput');
     cy.get('input[name="password"]').as('passwordInput');
     cy.findByRole('button').as('submitButton');
 
